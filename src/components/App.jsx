@@ -1,3 +1,16 @@
+import { Searchbar } from './Searchbar/Searchbar';
+import { ImageGallery } from './ImageGallery/ImageGallery.js/ImageGallery';
+import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
+
+import { Axios } 
+
 export const App = () => {
-  return <div>React homework template</div>;
+  return (
+    <>
+      <Searchbar />
+      <ImageGallery>
+        <ImageGalleryItem />
+      </ImageGallery>
+    </>
+  );
 };
