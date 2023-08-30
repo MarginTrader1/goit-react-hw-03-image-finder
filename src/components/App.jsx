@@ -27,15 +27,10 @@ export class App extends Component {
     }
     // делаем запрос уникальным по методу ниже и записываем его в state
     this.setState({
-      searchQuery: `${Date.now()}/${newQuery}`,
+      searchQuery: `${Date.now()}/${newQuery}`.trim(),
       data: [],
       page: 1,
     });
-  };
-
-  // запрос за следующей страничкой
-  newPage = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
   // основной запрос на сервер
@@ -49,10 +44,17 @@ export class App extends Component {
 
       // реализация отображения загрузки
       this.setState({ isLoading: true });
+
+      console.log(this.state.page);
       const images = await API.fetchImages(searchQuery, this.state.page);
       this.setState({ data: images, isLoading: false });
     }
   }
+
+  // запрос за следующей страничкой
+  newPage = () => {
+    this.setState(prevState => ({ page: prevState.page + 1 }));
+  };
 
   render() {
     const { data, isLoading } = this.state;
