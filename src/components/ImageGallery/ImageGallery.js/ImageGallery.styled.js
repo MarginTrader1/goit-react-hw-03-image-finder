@@ -10,4 +10,5 @@ export const List = styled.ul`
   column-gap: 24px;
   row-gap: 48px;
   justify-content: center;
-`;
+  list-style: none;
+`
