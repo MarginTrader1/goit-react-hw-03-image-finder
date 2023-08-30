@@ -9,20 +9,32 @@ import API from 'API';
 export class App extends Component {
   state = {
     data: [],
-    searchQuery: 'cat',
+    searchQuery: '',
     page: 1,
   };
 
-  getImages = async () => {
-    const { searchQuery, page } = this.state;
-    const images = await API.fetchImages(searchQuery, page);
-    this.setState({ data: images });
+  // получаем велью инпута, которое записываем в state
+  getQuery = newQuery => {
+    this.setState({ searchQuery: newQuery });
   };
+
+  // запрос за следующей страничкой 
+  newPage = () => {
+    this.setState({ page: this.state.page + 1});
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.searchQuery !== this.state.searchQuery) {
+      const { searchQuery, page } = this.state;
+      const images = await API.fetchImages(searchQuery, page);
+      this.setState({ data: images });
+    }
+  }
 
   render() {
     return (
       <>
-        <Searchbar getImages={this.getImages} />
+        <Searchbar getQuery={this.getQuery} />
         <ImageGallery>
           <ImageGalleryItem images={this.state.data} />
         </ImageGallery>

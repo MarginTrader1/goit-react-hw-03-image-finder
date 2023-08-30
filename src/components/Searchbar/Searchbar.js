@@ -1,12 +1,22 @@
-export const Searchbar = ({ getImages }) => {
+export const Searchbar = ({ getQuery }) => {
   return (
     <header>
-      <form>
-        <button type="button" onClick={getImages}>
+      <form
+        onSubmit={evt => {
+          evt.preventDefault();
+          getQuery(evt.target.elements.query.value);
+          evt.target.reset()
+        }}
+      >
+        <button type="submit">
           <span>Search</span>
         </button>
 
-        <input type="text" placeholder="Search images and photos" />
+        <input
+          type="text"
+          name="query"
+          placeholder="Search images and photos"
+        />
       </form>
     </header>
   );
