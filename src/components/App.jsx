@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery.js/ImageGallery';
 import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
+import { LoadMoreButton } from './Button/Button';
 
 import API from 'API';
 
@@ -18,10 +19,10 @@ export class App extends Component {
     this.setState({ searchQuery: newQuery });
   };
 
-  // запрос за следующей страничкой 
+  // запрос за следующей страничкой
   newPage = () => {
-    this.setState({ page: this.state.page + 1});
-  }
+    this.setState({ page: this.state.page + 1 });
+  };
 
   async componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
@@ -32,12 +33,14 @@ export class App extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <>
         <Searchbar getQuery={this.getQuery} />
         <ImageGallery>
           <ImageGalleryItem images={this.state.data} />
         </ImageGallery>
+        <LoadMoreButton loadMore={this.newPage} />
       </>
     );
   }
