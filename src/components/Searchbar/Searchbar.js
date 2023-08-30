@@ -1,23 +1,25 @@
+import { SearchForm, Button, Input } from "./Searchbar.styled";
+
 export const Searchbar = ({ getQuery }) => {
   return (
     <header>
-      <form
+      <SearchForm
         onSubmit={evt => {
           evt.preventDefault();
           getQuery(evt.target.elements.query.value);
           evt.target.reset()
         }}
       >
-        <button type="submit">
+        <Button type="submit">
           <span>Search</span>
-        </button>
+        </Button>
 
-        <input
+        <Input
           type="text"
           name="query"
           placeholder="Search images and photos"
         />
-      </form>
+      </SearchForm>
     </header>
   );
 };

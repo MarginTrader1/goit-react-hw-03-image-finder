@@ -35,6 +35,7 @@ export class App extends Component {
 
   // основной запрос на сервер
   async componentDidUpdate(prevProps, prevState) {
+    // проверка на новые данные
     if (
       prevState.searchQuery !== this.state.searchQuery ||
       prevState.page !== this.state.page
@@ -45,9 +46,21 @@ export class App extends Component {
       // реализация отображения загрузки
       this.setState({ isLoading: true });
 
-      console.log(this.state.page);
+      // запрос на сервер
       const images = await API.fetchImages(searchQuery, this.state.page);
-      this.setState({ data: images, isLoading: false });
+
+      // меняем state
+      this.setState(prevState => {
+        // если page равен 1 -> полностью меняем старый массив на новый массив (для новых запросов)
+        if (prevState.page === 1) {
+          return { data: images, isLoading: false };
+        }
+        // если page больше 1 -> создаем массив, в который распыляем старый массив и распыляем новый массив (для кнопки LoadMore)
+        return {
+          data: [...prevState.data, ...images],
+          isLoading: false,
+        };
+      });
     }
   }
 
@@ -63,7 +76,7 @@ export class App extends Component {
       <>
         <Searchbar getQuery={this.getQuery} />
 
-        {/* продолжение реализации для способа отображения загрузки isLoading */}
+        {/* продолжение реализации для отображения загрузки isLoading */}
         {isLoading ? (
           // если isLoading: true --> показываем спинер
           <Dna
