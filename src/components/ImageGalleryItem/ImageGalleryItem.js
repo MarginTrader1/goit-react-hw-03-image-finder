@@ -1,9 +1,7 @@
-export const ImageGalleryItem = () => {
-  return (
-    <>
-      <li class="gallery-item">
-        <img src="" alt="" />
-      </li>
-    </>
-  );
+export const ImageGalleryItem = ({ images }) => {
+  return images.map(image => (
+    <li key={image.id}>
+      <img src={image.webformatURL} alt={image.user} />
+    </li>
+  ));
 };

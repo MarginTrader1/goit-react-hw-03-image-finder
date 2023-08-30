@@ -1,3 +1,4 @@
 export const ImageGallery = ({ children }) => {
-  return <ul class="gallery">{children}</ul>;
+  console.log(children)
+  return <ul>{children}</ul>;
 };

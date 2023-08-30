@@ -1,20 +1,12 @@
-
-
-export const Searchbar = () => {
+export const Searchbar = ({ getImages }) => {
   return (
-    <header class="searchbar">
-      <form class="form">
-        <button type="submit" class="button">
-          <span class="button-label">Search</span>
+    <header>
+      <form>
+        <button type="button" onClick={getImages}>
+          <span>Search</span>
         </button>
 
-        <input
-          class="input"
-          type="text"
-          autocomplete="off"
-          autofocus
-          placeholder="Search images and photos"
-        />
+        <input type="text" placeholder="Search images and photos" />
       </form>
     </header>
   );
