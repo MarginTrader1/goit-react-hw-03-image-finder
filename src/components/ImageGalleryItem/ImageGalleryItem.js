@@ -43,9 +43,8 @@ export class ImageGalleryItem extends Component {
           isOpen={this.state.isModalOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
         >
-          <img src={image.largeImageURL} alt="large photo" />
+          <img src={image.pageURL} alt={image.user} />
           <button onClick={this.closeModal}>close</button>
         </Modal>
       </li>
