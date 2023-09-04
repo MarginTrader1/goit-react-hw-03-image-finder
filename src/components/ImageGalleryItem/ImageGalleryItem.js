@@ -34,6 +34,8 @@ export class ImageGalleryItem extends Component {
     return images.map(image => (
       <li key={image.id}>
         <img
+          width={400}
+          height={300}
           src={image.webformatURL}
           alt={image.user}
           onClick={this.openModal}
@@ -44,7 +46,7 @@ export class ImageGalleryItem extends Component {
           style={customStyles}
         >
           <img src={image.largeImageURL} alt={image.user} />
-          <button onClick={this.closeModal}>close</button>
+          {/* <button onClick={this.closeModal}>close</button> */}
         </Modal>
       </li>
     ));
