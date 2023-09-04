@@ -1,4 +1,5 @@
 import { Component } from 'react';
+
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -30,8 +31,6 @@ export class ImageGalleryItem extends Component {
   render() {
     const { images } = this.props;
 
-    console.log(images);
-
     return images.map(image => (
       <li key={image.id}>
         <img
@@ -44,7 +43,7 @@ export class ImageGalleryItem extends Component {
           onRequestClose={this.closeModal}
           style={customStyles}
         >
-          <img src={image.pageURL} alt={image.user} />
+          <img src={image.largeImageURL} alt={image.user} />
           <button onClick={this.closeModal}>close</button>
         </Modal>
       </li>

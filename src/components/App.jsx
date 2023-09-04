@@ -9,7 +9,7 @@ import { LoadMoreButton } from './Button/Button';
 import API from 'API';
 
 // импорт спиннера как компонента
-import { Dna } from 'react-loader-spinner';
+import { Hourglass } from 'react-loader-spinner';
 
 export class App extends Component {
   state = {
@@ -75,17 +75,17 @@ export class App extends Component {
     return (
       <>
         <Searchbar getQuery={this.getQuery} />
-
         {/* продолжение реализации для отображения загрузки isLoading */}
         {isLoading ? (
           // если isLoading: true --> показываем спинер
-          <Dna
+          <Hourglass
             visible={true}
             height="80"
             width="80"
-            ariaLabel="dna-loading"
+            ariaLabel="hourglass-loading"
             wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
+            wrapperClass=""
+            colors={['#306cce', '#72a1ed']}
           />
         ) : (
           // если isLoading: false --> рендерим галерею
@@ -93,7 +93,8 @@ export class App extends Component {
             <ImageGalleryItem images={data} />
           </ImageGallery>
         )}
-        <LoadMoreButton loadMore={this.newPage} />
+        {/* рендер кнопки если массив не пустой */}
+        {data.length !== 0 ? <LoadMoreButton loadMore={this.newPage} /> : null}
       </>
     );
   }
