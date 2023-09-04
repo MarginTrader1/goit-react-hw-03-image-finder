@@ -1,4 +1,4 @@
-import { SearchForm, Button, Input } from "./Searchbar.styled";
+import { SearchForm, Button, Input } from './Searchbar.styled';
 
 export const Searchbar = ({ getQuery }) => {
   return (
@@ -7,7 +7,7 @@ export const Searchbar = ({ getQuery }) => {
         onSubmit={evt => {
           evt.preventDefault();
           getQuery(evt.target.elements.query.value);
-          evt.target.reset()
+          evt.target.reset();
         }}
       >
         <Button type="submit">
@@ -17,6 +17,8 @@ export const Searchbar = ({ getQuery }) => {
         <Input
           type="text"
           name="query"
+          autocomplete="off"
+          autofocus
           placeholder="Search images and photos"
         />
       </SearchForm>

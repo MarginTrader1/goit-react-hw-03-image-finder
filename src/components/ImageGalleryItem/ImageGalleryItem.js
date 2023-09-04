@@ -1,5 +1,6 @@
 import { Component } from 'react';
 
+// импорт библиотеки для модального окна
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -29,6 +30,7 @@ export class ImageGalleryItem extends Component {
   };
 
   render() {
+
     const { images } = this.props;
 
     return images.map(image => (
@@ -38,7 +40,11 @@ export class ImageGalleryItem extends Component {
           height={300}
           src={image.webformatURL}
           alt={image.user}
-          onClick={this.openModal}
+          onClick={() => {
+            // выводим изображение в момент клика 
+            console.log(image.largeImageURL);
+            this.openModal();
+          }}
         />
         <Modal
           isOpen={this.state.isModalOpen}
@@ -46,7 +52,6 @@ export class ImageGalleryItem extends Component {
           style={customStyles}
         >
           <img src={image.largeImageURL} alt={image.user} />
-          {/* <button onClick={this.closeModal}>close</button> */}
         </Modal>
       </li>
     ));

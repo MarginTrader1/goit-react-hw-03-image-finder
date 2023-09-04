@@ -84,7 +84,7 @@ export class App extends Component {
             width="80"
             ariaLabel="hourglass-loading"
             wrapperStyle={{}}
-            wrapperClass=""
+            wrapperClass="hourglass-loading"
             colors={['#306cce', '#72a1ed']}
           />
         ) : (
