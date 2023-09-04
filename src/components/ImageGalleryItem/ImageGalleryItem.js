@@ -59,6 +59,7 @@ export class ImageGalleryItem extends Component {
           modalStyle={customStyles}
           closeModal={this.closeModal}
           isOpen={this.state.isModalOpen}
+          user={user}
         />
       </li>
     );

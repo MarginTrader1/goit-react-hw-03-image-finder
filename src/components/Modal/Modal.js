@@ -7,10 +7,11 @@ export const ModalWindow = ({
   modalStyle,
   closeModal,
   isOpen,
+  user,
 }) => {
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal} style={modalStyle}>
-      <img src={largeImageURL} alt="Large Image" />
+      <img src={largeImageURL} alt={user} />
     </Modal>
   );
 };
