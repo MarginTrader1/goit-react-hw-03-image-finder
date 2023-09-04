@@ -17,8 +17,8 @@ export const Searchbar = ({ getQuery }) => {
         <Input
           type="text"
           name="query"
-          autocomplete="off"
-          autofocus
+          autoComplete="off"
+          autoFocus
           placeholder="Search images and photos"
         />
       </SearchForm>

@@ -2,7 +2,6 @@ import { Component } from 'react';
 
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery.js/ImageGallery';
-import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import { LoadMoreButton } from './Button/Button';
 
 // импорт запроса
@@ -89,9 +88,7 @@ export class App extends Component {
           />
         ) : (
           // если isLoading: false --> рендерим галерею
-          <ImageGallery>
-            <ImageGalleryItem images={data} />
-          </ImageGallery>
+          <ImageGallery images={data}/>
         )}
         {/* рендер кнопки если массив не пустой */}
         {data.length !== 0 ? <LoadMoreButton loadMore={this.newPage} /> : null}
