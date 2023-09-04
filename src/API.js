@@ -7,7 +7,3 @@ export const fetchImages = async (searchQuery, page) => {
   const response = await axios.get(url);
   return response.data.hits;
 };
-
-export default {
-  fetchImages,
-};

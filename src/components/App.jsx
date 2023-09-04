@@ -6,7 +6,7 @@ import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
 import { LoadMoreButton } from './Button/Button';
 
 // импорт запроса
-import API from 'API';
+import { fetchImages } from 'API';
 
 // импорт спиннера как компонента
 import { Hourglass } from 'react-loader-spinner';
@@ -47,7 +47,7 @@ export class App extends Component {
       this.setState({ isLoading: true });
 
       // запрос на сервер
-      const images = await API.fetchImages(searchQuery, this.state.page);
+      const images = await fetchImages(searchQuery, this.state.page);
 
       // меняем state
       this.setState(prevState => {
