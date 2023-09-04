@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { ModalWindow } from 'components/Modal/Modal';
 
 // импорт библиотеки для модального окна
 import Modal from 'react-modal';
@@ -13,6 +14,7 @@ const customStyles = {
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
   },
+
   // стили для контента внутри модального окна
   content: {
     top: '50%',
@@ -49,20 +51,15 @@ export class ImageGalleryItem extends Component {
           height={300}
           src={webformatURL}
           alt={user}
-          onClick={() => {
-            // выводим изображение в момент клика
-            console.log(largeImageURL);
-            this.openModal();
-          }}
+          onClick={this.openModal}
         />
 
-        <Modal
+        <ModalWindow
+          largeImageURL={largeImageURL}
+          modalStyle={customStyles}
+          closeModal={this.closeModal}
           isOpen={this.state.isModalOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-        >
-          <img src={largeImageURL} alt={user} />
-        </Modal>
+        />
       </li>
     );
   }
